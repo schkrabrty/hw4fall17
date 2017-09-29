@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'movies#index'
-
+  #get 'users/new', to: 'users#new'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -15,7 +15,13 @@ Rails.application.routes.draw do
   #   resources :products
 
   resources :movies
+  get 'users/new', to: 'users#new'
+  resources :users, except: [:new]
   
+  match '/login', to: 'sessions#new', via: :get
+  match '/login_create', to: 'sessions#create', via: :post
+  match '/logout', to: 'sessions#destroy', via: :delete
+
   # Example resource route with options:
   #   resources :products do
   #     member do

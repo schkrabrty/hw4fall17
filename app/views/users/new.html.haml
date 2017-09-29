@@ -1,0 +1,14 @@
+%h1 Sign-up
+- if @user.errors.any?
+  %ul
+    - @user.errors.full_messages.each do |msg|
+      %li
+        = msg
+= form_for @user do |f|
+  %p
+    = f.label :user_id, 'User-ID'
+    = f.text_field :user_id, :id => 'signupUser'
+  %p
+    = f.label :email, 'E-Mail'
+    = f.text_field :email, :id => 'signupEmail'
+    = f.submit "Create my account", :id => 'signupCreate'

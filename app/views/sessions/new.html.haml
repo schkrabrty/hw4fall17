@@ -1,0 +1,16 @@
+%h1 Login
+// - if @user.errors.any?
+//   %ul
+//     - @user.errors.full_messages.each do |msg|
+//       %li
+//         = msg
+= form_for :session, url: login_create_path do |f|
+  %p
+    = f.label :user_id, 'User-ID'
+    = f.text_field :user_id, :id => 'loginUser'
+  %p
+    = f.label :email, 'E-Mail'
+    = f.text_field :email, :id => 'loginEmail'
+    = button_to "Login to my account", login_create_path, :id => 'login_submit'
+  %p
+    = link_to "Sign-up for an account", users_new_path, :id => 'signup'

@@ -8,7 +8,13 @@
 
   %body
     %h1.title Rotten Potatoes!
+    - if logged_in?
+      = button_to "Log Out", logout_path, method: :delete, :id => "logout"
+    - else
+      = button_to "Sign Up/Login", login_path, :method => "get", :id => "signupLogin"
     #main
+      //flash[:notice] = {:class => :flashMessage}
+      //flash[:warning] = {:class => :flashMessage}
       - if flash[:notice]
         #notice.message= flash[:notice]
       - elsif flash[:warning]
